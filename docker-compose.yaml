@@ -1,0 +1,15 @@
+version: '3'
+services:
+  grocery-booking-app:
+    build: .
+    ports:
+      - "7777:7777"
+    depends_on:
+      - h2db
+
+  h2db:
+    image: oscarfonts/h2:latest
+    ports:
+      - "8082:8082"
+    environment:
+      - H2_OPTIONS=-tcp -tcpAllowOthers -tcpPort 9092
